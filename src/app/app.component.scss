@@ -1,0 +1,90 @@
+#header {
+    background-color: #1b1b1d;
+    color: white;
+    margin-bottom: 1.5rem;
+    padding: 1rem 0;
+}
+
+#input-section {
+    margin-bottom: 2rem;
+
+    .input-group {
+        border: 1px solid #1b1b1d;
+        border-radius: 3px;
+        margin-bottom: 0.92rem;
+
+        &-append {
+            width: 70px;
+            .input-group-text {
+                background-color: #1b1b1d;
+                border: none;
+                color: white;
+                text-align: center;
+                display: block;
+                width: 100%;
+            }
+        }
+        
+        input {
+            background-color: #262b31;
+            border: 1px solid #1b1b1d;
+            border-bottom: 2px;
+            color: white;
+            font-family: consolas, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 1rem;
+        }
+    }
+
+    .form-group {
+        height: 45px;
+        input {
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 0.3rem 3.5rem;
+            width: 100%;
+        }
+    }
+}
+
+#results-section {
+    .list-group {
+        box-shadow: 0 0 7px 5px rgba(black, 0.3);
+        &-item {
+            background-color: whitesmoke;
+            position: relative;
+
+            svg {
+                fill: whitesmoke;
+                position: absolute;
+                left: 15px;
+            }
+
+            label {
+                cursor: pointer;
+                display: block;
+                font-weight: 600;
+                margin: 0;
+            }
+
+            span {
+                cursor: pointer;
+                font-size: 1rem;
+            }
+
+            &.active {
+                background-color: #1b284b;
+                border: none;
+
+                label {
+                    text-transform: uppercase;
+                }
+            }
+        }
+    }
+
+    .tab-content {
+        table {
+            color: white;
+        }
+    }
+}

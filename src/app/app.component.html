@@ -1,0 +1,123 @@
+<div id="header">
+    <h4 class="text-center">Calculadora de Certificados de Depósito</h4>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <form action="">
+                <div id="input-section">
+                    <div class="row justify-content-center">
+                        <div class="col-4 col-md-4 col-lg-3">
+                            <label for="" class="mt-4 mb-0">Plazo</label>
+                            <div class="input-group input-group-sm">
+                                <input type="number" class="form-control" placeholder="Max 12" min="1" max="12">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">Meses</span>
+                                </div>
+                            </div><!-- /input-group -->
+                        </div><!-- /col -->
+
+                        <div class="col-8 col-md-4 col-lg-3">
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">Fecha</span>
+                                </div>
+                                <input type="date" class="form-control" required>
+                            </div><!-- /input-group -->
+
+                            <div class="input-group">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">Monto</span>
+                                </div>
+                                <input type="number" class="form-control" min="1" placeholder="0.00" step="0.01"
+                                    required>
+                            </div><!-- /input-group -->
+
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">Tasa %</span>
+                                </div>
+                                <input type="number" class="form-control" min="0" placeholder="0.00" step="0.01"
+                                    required>
+                            </div><!-- /input-group -->
+                        </div><!-- /col -->
+                    </div><!-- /row -->
+
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-md-8 col-lg-6 text-center">
+                            <div class="form-group">
+                                <input type="submit" value="Calcular" class="btn btn-outline-primary">
+                            </div>
+                        </div><!-- /col -->
+                    </div><!-- /row -->
+                </div>
+
+                <div id="results-section" class="row">
+                    <div class="col-8 offset-2 col-md-4 offset-md-0 mb-4 mb-md-0 col-lg-4 offset-lg-1">
+                        <div class="list-group text-center" id="list-tab" role="tablist">
+                            <a class="list-group-item list-group-item-action active" id="list-home-list"
+                                data-toggle="list" href="#list-home" role="tab" aria-controls="home">
+                                <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-check-circle-fill"
+                                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                                </svg>
+                                <label for="">Con crédito a cuenta</label>
+                                <span>$3,500.50</span>
+                            </a>
+                            <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list"
+                                href="#list-profile" role="tab" aria-controls="profile">
+                                <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-check-circle-fill"
+                                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                                </svg>
+                                <label for="">Capitalizable</label>
+                                <span>$3,500.50</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-8 col-lg-6">
+                        <div class="tab-content" id="nav-tabContent">
+                            <div class="tab-pane fade" id="list-home">
+                                <table class="table">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th scope="col">Fecha</th>
+                                            <th scope="col">Interés</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">dd/MM/yyyy</th>
+                                            <td>0.0</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div><!-- /tab-pane -->
+
+                            <div class="tab-pane fade show active" id="list-profile">
+                                <table class="table">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th scope="col">Fecha</th>
+                                            <th scope="col">Interés</th>
+                                            <th scope="col">Nuevo Capital</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">dd/MM/yyyy</th>
+                                            <td>0.00</td>
+                                            <td>0.00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div><!-- /tab-pane -->
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

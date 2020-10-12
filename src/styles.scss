@@ -1,0 +1,12 @@
+body {
+    background-color: #1d2024;
+    color: white;
+    font-size: 18px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+input:active, input:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border: none;
+}
