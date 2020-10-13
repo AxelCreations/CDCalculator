@@ -34,18 +34,18 @@ export class AppComponent {
   });
 
   // Instanciate results classes
-  public capitalizedRow: CapitalizedRow[] = [];
-  public creditRow: CreditRow[] = [];
+  public capitalizedRows: CapitalizedRow[] = [];
+  public creditRows: CreditRow[] = [];
 
   // Final results of calculated benefit
-  public capitalizedBenefit: number = 0;
-  public creditBenefit: number = 0;
+  public capitalizedBenefit = 0;
+  public creditBenefit = 0;
 
   onSubmit(): void {
     if (this.form.valid) {
       // Generate the results rows
-      this.GenerateCapitalizedRows(this.form.value);
-      this.GenerateCreditRows(this.form.value);
+      this.GeneratecapitalizedRowss(this.form.value);
+      this.GeneratecreditRowss(this.form.value);
 
       // Show the results section
       this.showResultsSection = true;
@@ -54,7 +54,7 @@ export class AppComponent {
     }
   }
 
-  private GenerateCapitalizedRows(values: any): void {
+  private GeneratecapitalizedRowss(values: any): void {
     // Get the separated values of input
     const Months: number = values.months as number;
     const InitialDate: Date = new Date(values.depositDate);
@@ -64,7 +64,8 @@ export class AppComponent {
     let newInterest: number;
 
     // Clear the current rows data
-    this.capitalizedRow = [];
+    this.capitalizedRows = [];
+    this.capitalizedBenefit = 0;
 
     for (let index = 1; index < Months + 1; index++) {
       // Increment one month to InitialDate
@@ -77,13 +78,13 @@ export class AppComponent {
       // Calculate the final benefit
       this.capitalizedBenefit += newInterest;
 
-      this.capitalizedRow.push(
+      this.capitalizedRows.push(
         new CapitalizedRow(InitialDate, newInterest, newAmount)
       );
     }
   }
 
-  private GenerateCreditRows(values: any): void {
+  private GeneratecreditRowss(values: any): void {
     // Get the separated values of input
     const Months: number = values.months as number;
     const InitialDate: Date = new Date(values.depositDate);
@@ -92,7 +93,8 @@ export class AppComponent {
     const Interest = (Amount * (Rate / 100) / 360) * 30;
 
     // Clear the current rows data
-    this.creditRow = [];
+    this.creditRows = [];
+    this.creditBenefit = 0;
 
     for (let index = 1; index < Months + 1; index++) {
       // Increment one month to InitialDate
@@ -101,7 +103,7 @@ export class AppComponent {
       // Calculate the final benefit
       this.creditBenefit += Interest;
 
-      this.creditRow.push(
+      this.creditRows.push(
         new CreditRow(InitialDate, Interest)
       );
     }

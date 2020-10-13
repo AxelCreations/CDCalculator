@@ -10,8 +10,8 @@
                         <div class="col-4 col-md-4 col-lg-3">
                             <label for="" class="mt-4 mb-0">Plazo</label>
                             <div class="input-group input-group-sm">
-                                <input type="number" class="form-control" placeholder="Max 12"
-                                    name="months" id="months" formControlName="months" required min="1" max="12" autofocus>
+                                <input type="number" class="form-control" placeholder="Max 12" name="months" id="months"
+                                    formControlName="months" required min="1" max="12" autofocus>
                                 <div class="input-group-append">
                                     <span class="input-group-text">Meses</span>
                                 </div>
@@ -48,7 +48,8 @@
                     <div class="row justify-content-center">
                         <div class="col-12 col-md-8 col-lg-6 text-center">
                             <div class="form-group">
-                                <input type="submit" [disabled]="!form.valid" value="Calcular" class="btn btn-outline-primary">
+                                <input type="submit" [disabled]="!form.valid" value="Calcular"
+                                    class="btn btn-outline-primary">
                             </div>
                         </div><!-- /col -->
                     </div><!-- /row -->
@@ -65,7 +66,7 @@
                                         d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
                                 </svg>
                                 <label for="">Con crédito a cuenta</label>
-                                <span>${{ creditBenefit |  number:'1.2'}}</span>
+                                <span>${{ creditBenefit |  number:'1.2' }}</span>
                             </a>
                             <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list"
                                 href="#list-profile" role="tab" aria-controls="profile">
@@ -75,13 +76,13 @@
                                         d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
                                 </svg>
                                 <label for="">Capitalizable</label>
-                                <span>${{ capitalizedBenefit |  number:'1.2'}}</span>
+                                <span>${{ capitalizedBenefit |  number:'1.2-2' }}</span>
                             </a>
                         </div>
                     </div>
                     <div class="col-12 col-md-8 col-lg-6">
                         <div class="tab-content" id="nav-tabContent">
-                            <div class="tab-pane fade" id="list-home">
+                            <div class="tab-pane fade show active" id="list-home">
                                 <table class="table">
                                     <thead class="thead-dark">
                                         <tr>
@@ -90,28 +91,28 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <th scope="row">dd/MM/yyyy</th>
-                                            <td>0.0</td>
+                                        <tr *ngFor="let item of creditRows">
+                                            <th scope="row">{{ item.month | date }}</th>
+                                            <td>${{ item.tax |  number:'1.2-2' }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div><!-- /tab-pane -->
 
-                            <div class="tab-pane fade show active" id="list-profile">
+                            <div class="tab-pane fade" id="list-profile">
                                 <table class="table">
                                     <thead class="thead-dark">
                                         <tr>
-                                            <th scope="col">Fecha</th>
-                                            <th scope="col">Interés</th>
-                                            <th scope="col">Nuevo Capital</th>
+                                            <th>Fecha</th>
+                                            <th>Interés</th>
+                                            <th>Nuevo Capital</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <th scope="row">dd/MM/yyyy</th>
-                                            <td>0.00</td>
-                                            <td>0.00</td>
+                                        <tr *ngFor="let item of capitalizedRows">
+                                            <th scope="row">{{ item.month | date:'dd/MMM/yyyy'}}</th>
+                                            <td>${{ item.tax |  number:'1.2-2' }}</td>
+                                            <td>${{ item.newCapital | number:'1.2-2' }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
