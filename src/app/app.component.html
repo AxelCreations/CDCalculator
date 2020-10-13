@@ -4,13 +4,14 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <form action="">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
                 <div id="input-section">
                     <div class="row justify-content-center">
                         <div class="col-4 col-md-4 col-lg-3">
                             <label for="" class="mt-4 mb-0">Plazo</label>
                             <div class="input-group input-group-sm">
-                                <input type="number" class="form-control" placeholder="Max 12" min="1" max="12">
+                                <input type="number" class="form-control" placeholder="Max 12"
+                                    name="months" id="months" formControlName="months" required min="1" max="12" autofocus>
                                 <div class="input-group-append">
                                     <span class="input-group-text">Meses</span>
                                 </div>
@@ -22,23 +23,24 @@
                                 <div class="input-group-append">
                                     <span class="input-group-text">Fecha</span>
                                 </div>
-                                <input type="date" class="form-control" required>
+                                <input type="date" class="form-control" name="depositDate" id="depositDate"
+                                    formControlName="depositDate" required>
                             </div><!-- /input-group -->
 
                             <div class="input-group">
                                 <div class="input-group-append">
                                     <span class="input-group-text">Monto</span>
                                 </div>
-                                <input type="number" class="form-control" min="1" placeholder="0.00" step="0.01"
-                                    required>
+                                <input type="number" class="form-control" min="1" placeholder="0.00" step="10000"
+                                    name="depositAmount" id="depositAmount" formControlName="depositAmount" required>
                             </div><!-- /input-group -->
 
                             <div class="input-group input-group-sm">
                                 <div class="input-group-append">
                                     <span class="input-group-text">Tasa %</span>
                                 </div>
-                                <input type="number" class="form-control" min="0" placeholder="0.00" step="0.01"
-                                    required>
+                                <input type="number" class="form-control" min="0" placeholder="0.00" step="0.5"
+                                    name="depositRate" id="depositRate" formControlName="depositRate" required>
                             </div><!-- /input-group -->
                         </div><!-- /col -->
                     </div><!-- /row -->
@@ -46,13 +48,13 @@
                     <div class="row justify-content-center">
                         <div class="col-12 col-md-8 col-lg-6 text-center">
                             <div class="form-group">
-                                <input type="submit" value="Calcular" class="btn btn-outline-primary">
+                                <input type="submit" [disabled]="!form.valid" value="Calcular" class="btn btn-outline-primary">
                             </div>
                         </div><!-- /col -->
                     </div><!-- /row -->
                 </div>
 
-                <div id="results-section" class="row">
+                <div *ngIf="showResultsSection" id="results-section" class="row">
                     <div class="col-8 offset-2 col-md-4 offset-md-0 mb-4 mb-md-0 col-lg-4 offset-lg-1">
                         <div class="list-group text-center" id="list-tab" role="tablist">
                             <a class="list-group-item list-group-item-action active" id="list-home-list"
