@@ -57,7 +57,7 @@ export class AppComponent {
   private GeneratecapitalizedRowss(values: any): void {
     // Get the separated values of input
     const Months: number = values.months as number;
-    const InitialDate: Date = new Date(values.depositDate);
+    const InitialDate: Date = new Date(values.depositDate.toString() + ' 00:00:00');
     const Amount: number = values.depositAmount as number;
     const Rate: number = values.depositRate as number;
     let newAmount: number = Amount;
@@ -79,7 +79,7 @@ export class AppComponent {
       this.capitalizedBenefit += newInterest;
 
       this.capitalizedRows.push(
-        new CapitalizedRow(InitialDate, newInterest, newAmount)
+        new CapitalizedRow(new Date(InitialDate), newInterest, newAmount)
       );
     }
   }
@@ -87,7 +87,7 @@ export class AppComponent {
   private GeneratecreditRowss(values: any): void {
     // Get the separated values of input
     const Months: number = values.months as number;
-    const InitialDate: Date = new Date(values.depositDate);
+    const InitialDate: Date = new Date(values.depositDate.toString() + ' 00:00:00');
     const Amount: number = values.depositAmount as number;
     const Rate: number = values.depositRate as number;
     const Interest = (Amount * (Rate / 100) / 360) * 30;
@@ -104,7 +104,7 @@ export class AppComponent {
       this.creditBenefit += Interest;
 
       this.creditRows.push(
-        new CreditRow(InitialDate, Interest)
+        new CreditRow(new Date(InitialDate), Interest)
       );
     }
   }

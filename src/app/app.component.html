@@ -1,3 +1,9 @@
+<script type="text/javascript">
+    $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+    })
+</script>
+
 <div id="header">
     <h4 class="text-center">Calculadora de Certificados de Depósito</h4>
 </div>
@@ -7,59 +13,61 @@
             <form [formGroup]="form" (ngSubmit)="onSubmit()">
                 <div id="input-section">
                     <div class="row justify-content-center">
-                        <div class="col-4 col-md-4 col-lg-3">
-                            <label for="" class="mt-4 mb-0">Plazo</label>
+                        <div class="col-6 col-md-5 col-lg-4 col-xl-3">
                             <div class="input-group input-group-sm">
                                 <input type="number" class="form-control" placeholder="Max 12" name="months" id="months"
-                                    formControlName="months" required min="1" max="12" autofocus>
+                                    formControlName="months" required min="1" max="12" autofocus title="Plazo en meses">
+
                                 <div class="input-group-append">
                                     <span class="input-group-text">Meses</span>
                                 </div>
                             </div><!-- /input-group -->
-                        </div><!-- /col -->
 
-                        <div class="col-8 col-md-4 col-lg-3">
                             <div class="input-group input-group-sm">
+                                <input type="date" class="form-control" name="depositDate" id="depositDate"
+                                    formControlName="depositDate" required title="Fecha inicial">
+
                                 <div class="input-group-append">
                                     <span class="input-group-text">Fecha</span>
                                 </div>
-                                <input type="date" class="form-control" name="depositDate" id="depositDate"
-                                    formControlName="depositDate" required>
                             </div><!-- /input-group -->
+                        </div><!-- /col -->
 
-                            <div class="input-group">
+                        <div class="col-6 col-md-5 col-lg-4 col-xl-3">
+                            <div class="input-group input-group-sm">
                                 <div class="input-group-append">
                                     <span class="input-group-text">Monto</span>
                                 </div>
+
                                 <input type="number" class="form-control" min="1" placeholder="0.00" step="10000"
-                                    name="depositAmount" id="depositAmount" formControlName="depositAmount" required>
+                                    name="depositAmount" id="depositAmount" formControlName="depositAmount" required title="Monto del depósito">
                             </div><!-- /input-group -->
 
                             <div class="input-group input-group-sm">
                                 <div class="input-group-append">
                                     <span class="input-group-text">Tasa %</span>
                                 </div>
+                                
                                 <input type="number" class="form-control" min="0" placeholder="0.00" step="0.5"
-                                    name="depositRate" id="depositRate" formControlName="depositRate" required>
+                                    name="depositRate" id="depositRate" formControlName="depositRate" required title="Tasa interés anual">
                             </div><!-- /input-group -->
                         </div><!-- /col -->
                     </div><!-- /row -->
 
                     <div class="row justify-content-center">
-                        <div class="col-12 col-md-8 col-lg-6 text-center">
+                        <div class="col-12 col-md-10 col-lg-8 col-xl-6 text-center">
                             <div class="form-group">
                                 <input type="submit" [disabled]="!form.valid" value="Calcular"
                                     class="btn btn-outline-primary">
                             </div>
                         </div><!-- /col -->
                     </div><!-- /row -->
-                </div>
+                </div><!-- /input-section -->
 
                 <div *ngIf="showResultsSection" id="results-section" class="row">
-                    <div class="col-8 offset-2 col-md-4 offset-md-0 mb-4 mb-md-0 col-lg-4 offset-lg-1">
-                        <div class="list-group text-center" id="list-tab" role="tablist">
-                            <a class="list-group-item list-group-item-action active" id="list-home-list"
-                                data-toggle="list" href="#list-home" role="tab" aria-controls="home">
+                    <div class="col-10 offset-1 col-md-8 offset-md-2 col-lg-5 offset-lg-0 col-xl-4 offset-xl-1 mb-4 mb-lg-0">
+                        <div class="list-group text-center">
+                            <a class="list-group-item list-group-item-action active" data-toggle="list" href="#list-credit">
                                 <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-check-circle-fill"
                                     fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd"
@@ -68,49 +76,49 @@
                                 <label for="">Con crédito a cuenta</label>
                                 <span>${{ creditBenefit |  number:'1.2' }}</span>
                             </a>
-                            <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list"
-                                href="#list-profile" role="tab" aria-controls="profile">
+                            <a class="list-group-item list-group-item-action" data-toggle="list" href="#list-capitalized">
                                 <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-check-circle-fill"
                                     fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd"
                                         d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
                                 </svg>
                                 <label for="">Capitalizable</label>
-                                <span>${{ capitalizedBenefit |  number:'1.2-2' }}</span>
+                                <span class="mb-2">${{ capitalizedBenefit |  number:'1.2-2' }}</span>
                             </a>
-                        </div>
+                            <label class="list-group-extra"><span>Capitalizable:</span> +${{ capitalizedBenefit - creditBenefit |  number:'1.2-2' }}</label>
+                        </div><!-- /list-group -->
                     </div>
-                    <div class="col-12 col-md-8 col-lg-6">
-                        <div class="tab-content" id="nav-tabContent">
-                            <div class="tab-pane fade show active" id="list-home">
-                                <table class="table">
+                    <div class="col-12 col-md-10 offset-md-1 col-lg-7 offset-lg-0 col-xl-6">
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="list-credit">
+                                <table class="table text-center">
                                     <thead class="thead-dark">
                                         <tr>
-                                            <th scope="col">Fecha</th>
+                                            <th scope="col">Mes</th>
                                             <th scope="col">Interés</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr *ngFor="let item of creditRows">
-                                            <th scope="row">{{ item.month | date }}</th>
+                                            <td>{{ item.month | date:'MM-yyyy' }}</td>
                                             <td>${{ item.tax |  number:'1.2-2' }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div><!-- /tab-pane -->
 
-                            <div class="tab-pane fade" id="list-profile">
-                                <table class="table">
+                            <div class="tab-pane fade" id="list-capitalized">
+                                <table class="table text-center">
                                     <thead class="thead-dark">
                                         <tr>
-                                            <th>Fecha</th>
+                                            <th>Mes</th>
                                             <th>Interés</th>
                                             <th>Nuevo Capital</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr *ngFor="let item of capitalizedRows">
-                                            <th scope="row">{{ item.month | date:'dd/MMM/yyyy'}}</th>
+                                            <td>{{ item.month | date:'MM-yyyy' }}</td>
                                             <td>${{ item.tax |  number:'1.2-2' }}</td>
                                             <td>${{ item.newCapital | number:'1.2-2' }}</td>
                                         </tr>

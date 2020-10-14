@@ -2,11 +2,11 @@
     background-color: #1b1b1d;
     color: white;
     margin-bottom: 1.5rem;
-    padding: 1rem 0;
+    padding: 0.8rem 0;
 }
 
 #input-section {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 
     .input-group {
         border: 1px solid #1b1b1d;
@@ -70,6 +70,18 @@
 #results-section {
     .list-group {
         box-shadow: 0 0 7px 5px rgba(black, 0.3);
+        
+        &-extra {
+            color: #007bff;
+            font-size: 1rem;
+            font-weight: 700;
+            margin: 0.5rem 0;
+            
+            span {
+                font-weight: 200;
+            }
+        }
+
         &-item {
             background-color: whitesmoke;
             position: relative;
@@ -92,9 +104,14 @@
                 font-size: 1rem;
             }
 
+            &:hover {
+                color: black;
+            }
+
             &.active {
                 background-color: #1b284b;
                 border: none;
+                color: white;
 
                 label {
                     text-transform: uppercase;
@@ -106,6 +123,27 @@
     .tab-content {
         table {
             color: white;
+
+            thead {
+                tr th {
+                    padding: 0.1rem 0.8rem;
+                }
+            }
+
+            tbody {
+                font-size: 0.95rem;
+
+                tr td, tr th {
+                    padding: 0.1rem 0.8rem;
+                    border-bottom: 1px solid rgba(245, 245, 245, 0.473);
+                }
+
+                tr {
+                    &:hover {
+                        background-color: rgba(#1b1b1d, 0.5);
+                    }
+                }
+            }
         }
     }
 }
