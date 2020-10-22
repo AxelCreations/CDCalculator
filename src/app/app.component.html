@@ -25,11 +25,13 @@
 
                             <div class="input-group input-group-sm">
                                 <input type="date" class="form-control" name="depositDate" id="depositDate"
-                                    formControlName="depositDate" required title="Fecha inicial">
+                                    formControlName="depositDate" required title="Fecha inicial" placeholder="Pick">
 
                                 <div class="input-group-append">
                                     <span class="input-group-text">Fecha</span>
+                                    <!-- {{ initialDate | date:'yyyy-MM-dd' }} -->
                                 </div>
+                                <!-- <input type="date" name="input" id="input" value="{{ initialDate | date:'yyyy-MM-dd' }}"> -->
                             </div><!-- /input-group -->
                         </div><!-- /col -->
 
@@ -57,8 +59,8 @@
                     <div class="row justify-content-center">
                         <div class="col-12 col-md-10 col-lg-8 col-xl-6 text-center">
                             <div class="form-group">
-                                <input type="submit" [disabled]="!form.valid" value="Calcular"
-                                    class="btn btn-outline-primary">
+                                <input type="submit" value="Calcular"
+                                    class="btn btn-outline-primary" (click)="showInvalidAlert()">
                             </div>
                         </div><!-- /col -->
                     </div><!-- /row -->

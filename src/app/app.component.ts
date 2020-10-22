@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CapitalizedRow } from './models/capitalized.model';
 import { CreditRow } from './models/credit.model';
@@ -8,10 +8,10 @@ import { CreditRow } from './models/credit.model';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-
 export class AppComponent {
   // Flag to show the results section
   public showResultsSection = false;
+  public initialDate = new Date();
 
   // Create a Reactive Form to get input values
   form = new FormGroup({
@@ -20,7 +20,7 @@ export class AppComponent {
       Validators.min(1),
       Validators.max(12)
     ]),
-    depositDate: new FormControl('', [
+    depositDate: new FormControl(`${this.initialDate.toJSON().substring(0, 10)}`, [
       Validators.required
     ]),
     depositAmount: new FormControl('', [
@@ -51,6 +51,12 @@ export class AppComponent {
       this.showResultsSection = true;
     } else {
       this.showResultsSection = false;
+    }
+  }
+
+  showInvalidAlert(): void {
+    if (!this.form.valid) {
+      alert('Completar todos los campos');
     }
   }
 

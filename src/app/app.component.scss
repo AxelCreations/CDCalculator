@@ -15,6 +15,7 @@
 
         &-append {
             width: 70px;
+
             .input-group-text {
                 background-color: #1b1b1d;
                 border: none;
@@ -62,6 +63,16 @@
                 border-color: #df4d48;
                 color: #a72924;
                 cursor: not-allowed;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #input-section {
+        .input-group {
+            input {
+                font-size: 0.8rem;
             }
         }
     }
